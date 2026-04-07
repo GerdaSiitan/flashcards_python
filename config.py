@@ -1,6 +1,7 @@
 import ctypes
 from matplotlib import style
 import ttkbootstrap as ttk
+from PIL import Image, ImageTk
 
 # Colors
 PRIMARY_COLOR = "#F8B9C2"
@@ -16,6 +17,7 @@ ctypes.windll.gdi32.AddFontResourceExW("assets/PixelOperator.ttf", 0x10, 0)
 # Fonts
 PIXEL_FONT = ("PixelOperator", 24)
 PIXEL_FONT_SMALL = ("PixelOperator", 19)
+PIXEL_FONT_MINITURE = ("PixelOperator", 10)
 PIXEL_FONT_CARD = ("PixelOperator", 16)
 
 
@@ -31,27 +33,26 @@ def setup_styles():
     )
 
     style.configure(
+        "Card3.TFrame",
+        background="gray",
+        bordercolor=PRIMARY_COLOR,
+        relief="solid",
+        borderwidth=2
+    )
+
+    style.configure(
+        "Card.TLabel",
+        background=BACKGROUND_COLOR
+    )
+
+
+    style.configure(
         "Card2.TFrame",
     )
 
     style.configure(
         "Arrow.TButton",
         bordercolor=PRIMARY_COLOR,
-        background=BACKGROUND_COLOR,
-        font=PIXEL_FONT_CARD,
-        borderwidth=2,
-        foreground=PRIMARY_COLOR,
-        relief="solid"
-    )
-
-    style.map(
-    "Arrow.TButton",
-    background=[("active", PRIMARY_COLOR), ("pressed", PRESSED_COLOR)],
-    foreground=[("active", "white"), ("pressed", "white")]
-    )
-
-    style.configure(
-        "Arrow.TButton",
         background=BACKGROUND_COLOR,
         foreground=PRIMARY_COLOR,
         font=PIXEL_FONT_CARD,
@@ -92,6 +93,10 @@ def setup_styles():
         background=[
             ("pressed", "white"),
             ("active", PRIMARY_COLOR)
+        ],
+        bordercolor=[
+        ("pressed", PRIMARY_COLOR),
+        ("active", PRIMARY_COLOR)
         ]
     )
 
