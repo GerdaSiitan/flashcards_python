@@ -1,8 +1,10 @@
 import ctypes
+from matplotlib import style
 import ttkbootstrap as ttk
 
 # Colors
 PRIMARY_COLOR = "#F8B9C2"
+PRESSED_COLOR = "#AA5764"
 SECONDARY_COLOR = "#AAB8DB"
 BACKGROUND_COLOR = "#FFF9FA"
 TEXT_COLOR1 = "#FDFDFD"
@@ -29,6 +31,10 @@ def setup_styles():
     )
 
     style.configure(
+        "Card2.TFrame",
+    )
+
+    style.configure(
         "Arrow.TButton",
         bordercolor=PRIMARY_COLOR,
         background=BACKGROUND_COLOR,
@@ -38,9 +44,75 @@ def setup_styles():
         relief="solid"
     )
 
+    style.map(
+    "Arrow.TButton",
+    background=[("active", PRIMARY_COLOR), ("pressed", PRESSED_COLOR)],
+    foreground=[("active", "white"), ("pressed", "white")]
+    )
+
     style.configure(
-        "Page.TFrame",
-        background=BACKGROUND_COLOR
+        "Arrow.TButton",
+        background=BACKGROUND_COLOR,
+        foreground=PRIMARY_COLOR,
+        font=PIXEL_FONT_CARD,
+        borderwidth=2,
+        relief="solid",
+        padding=(20, 15)
+    )
+
+    style.map(
+        "Arrow.TButton",
+        background=[
+            ("active", BACKGROUND_COLOR),
+            ("pressed", PRIMARY_COLOR)
+        ],
+        foreground=[
+            ("active", PRIMARY_COLOR),
+            ("pressed", "white")
+        ]
+    )
+
+    style.configure(
+        "Outlined.TButton",
+        foreground=PRIMARY_COLOR,
+        font=PIXEL_FONT_CARD,
+        borderwidth=2,
+        bordercolor=PRIMARY_COLOR,
+        background=BACKGROUND_COLOR,
+        relief="solid",
+        padding=(20, 15)
+    )
+
+    style.map(
+        "Outlined.TButton",
+        foreground=[
+            ("pressed", PRIMARY_COLOR),
+            ("active", "white")
+        ],
+        background=[
+            ("pressed", "white"),
+            ("active", PRIMARY_COLOR)
+        ]
+    )
+
+    style.configure(
+        "Filled.TButton",
+        background=PRIMARY_COLOR,
+        foreground="white", 
+        font=PIXEL_FONT_CARD,
+        borderwidth=0,
+        padding=(20, 15)
+    )
+
+    style.map(
+        "Filled.TButton",
+        background=[("active", PRIMARY_COLOR), ("pressed", PRESSED_COLOR)],
+        foreground=[("active", "white"), ("pressed", "white")]
+    )
+
+    style.configure(
+            "Page.TFrame",
+            background=BACKGROUND_COLOR
     )
 
     return style

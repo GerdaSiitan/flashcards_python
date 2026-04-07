@@ -51,10 +51,10 @@ class App(ttk.Window):
         self.create_card("Thermodynamics")
         self.create_card("Brainrot")
 
-        self.last_card("ADD MORE")
+        self.last_card()
 
 
-    def create_card(self, title_text, command=None):
+    def create_card(self, title_text):
         card = ttk.Frame(self.current_page, width=360, height=80, style="Card.TFrame")
         card.pack(pady=10, padx=20)
         card.pack_propagate(False)
@@ -76,18 +76,17 @@ class App(ttk.Window):
         )
         btn.pack(side="right", padx=20)
 
-    def last_card(self, title_text):
-        card = ttk.Frame(self.current_page, width=360, height=80, style="Arrow.TButton")
+    def last_card(self):
+        card = ttk.Frame(self.current_page, width=360, height=60)
         card.pack(pady=10, padx=20)
         card.pack_propagate(False)
 
         btn = ttk.Button(
             card,
-            text=title_text,
-            style="Arrow.TButton",
-            padding=(20, 15)
+            text="ADD MORE",
+            style="Outlined.TButton"
         )
-        btn.pack(side="right", padx=20)
+        btn.pack(expand=True, fill="both")
 
 if __name__ == "__main__":
     app = App()
