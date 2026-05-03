@@ -1,4 +1,5 @@
 import ctypes
+import os
 from matplotlib import style
 import ttkbootstrap as ttk
 from PIL import Image, ImageTk
@@ -11,14 +12,24 @@ BACKGROUND_COLOR = "#FFF9FA"
 TEXT_COLOR1 = "#FDFDFD"
 TEXT_COLOR2 = "#1E1E1E"
 
-# Load font
-ctypes.windll.gdi32.AddFontResourceExW("assets/PixelOperator.ttf", 0x10, 0)
+def load_fonts():
+    font_paths = [
+        "assets/PixelOperator.ttf",
+        "assets/PixelOperator-Bold.ttf",
+    ]
+
+    for path in font_paths:
+        full_path = os.path.abspath(path)
+        ctypes.windll.gdi32.AddFontResourceExW(full_path, 0x10, 0)
+load_fonts()
 
 # Fonts
-PIXEL_FONT = ("PixelOperator", 24)
-PIXEL_FONT_SMALL = ("PixelOperator", 19)
-PIXEL_FONT_MINITURE = ("PixelOperator", 10)
-PIXEL_FONT_CARD = ("PixelOperator", 16)
+PIXEL_FONT = ("Pixel Operator", 24)
+PIXEL_FONT_SMALL = ("Pixel Operator", 19)
+PIXEL_FONT_MINITURE = ("Pixel Operator", 10)
+PIXEL_FONT_CARD = ("Pixel Operator", 16)
+PIXEL_FONT_BOLD = ("Pixel Operator Bold", 24)
+PIXEL_FONT_BOLD_SMALL = ("Pixel Operator Bold", 19)
 
 
 def setup_styles():
@@ -44,7 +55,6 @@ def setup_styles():
         "Card.TLabel",
         background=BACKGROUND_COLOR
     )
-
 
     style.configure(
         "Card2.TFrame",
@@ -76,7 +86,7 @@ def setup_styles():
     style.configure(
         "Outlined.TButton",
         foreground=PRIMARY_COLOR,
-        font=PIXEL_FONT_CARD,
+        font=PIXEL_FONT_SMALL,
         borderwidth=2,
         bordercolor=PRIMARY_COLOR,
         background=BACKGROUND_COLOR,
@@ -104,9 +114,16 @@ def setup_styles():
         "Filled.TButton",
         background=PRIMARY_COLOR,
         foreground="white", 
-        font=PIXEL_FONT_CARD,
+        font=PIXEL_FONT_SMALL,
         borderwidth=0,
-        padding=(20, 15)
+        padding=(30, 15)
+    )
+
+    style.configure(
+        "Page.TLabel",
+        background=BACKGROUND_COLOR,
+        foreground=TEXT_COLOR2,
+        font=PIXEL_FONT
     )
 
     style.map(
@@ -119,5 +136,4 @@ def setup_styles():
             "Page.TFrame",
             background=BACKGROUND_COLOR
     )
-
     return style

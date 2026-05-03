@@ -18,7 +18,8 @@ class flashcardsApp(ttk.Window):
         self.header()
         self.text_card()
         self.center_card()
-        self.button_answer()
+        self.button_flip()
+        self.next_button()
     
     def header(self):
         card = ttk.Frame(self.current_page, style="Card2.TFrame")
@@ -54,8 +55,8 @@ class flashcardsApp(ttk.Window):
 
         title_label = ttk.Label(
             card,
-            text="Question",
-            font=PIXEL_FONT_SMALL,
+            text="Answer",
+            font=PIXEL_FONT_BOLD_SMALL,
             foreground=TEXT_COLOR2,
             anchor="center"
         )
@@ -77,16 +78,39 @@ class flashcardsApp(ttk.Window):
         )
         title_label.pack(expand=True)
 
-    def button_answer(self):
-        card = ttk.Frame(self.current_page, width=360, height=60)
+    def next_button(self):
+            card = ttk.Frame(self.current_page, width=360, height=80, style="Card.TFrame")
+            card.pack(pady=10, padx=15)
+            card.pack_propagate(False)
+
+            label = ttk.Label(
+                card,
+                text="NEXT",
+                font=PIXEL_FONT_SMALL,
+                foreground=TEXT_COLOR2,
+                background=BACKGROUND_COLOR
+            )
+            label.pack(side="left", padx=20)
+
+            btn = ttk.Button(
+                card,
+                text="➜",
+                style="Arrow.TButton",
+                padding=(20, 15),
+            )
+            btn.pack(side="right", padx=20)
+
+
+    def button_flip(self):
+        card = ttk.Frame(self.current_page, width=360, height=70)
         card.pack(pady=10, padx=20)
         card.pack_propagate(False)
 
         btn = ttk.Button(
             card,
-            text="ANSWER",
+            text="FLIP BACK TO QUESTION",
             style="Filled.TButton",
-            padding=(20, 15),
+            padding=(25, 15),
         )
         btn.pack(expand=True, fill="both")
 

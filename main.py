@@ -11,7 +11,7 @@ class App(ttk.Window):
 
         self.title("Flashcards App")
         self.geometry("420x780")
-        self.resizable(False, False)
+        self.resizable(True, True)
         self.configure(bg=BACKGROUND_COLOR)
 
         setup_styles()
@@ -39,7 +39,7 @@ class App(ttk.Window):
             foreground=PRIMARY_COLOR,
             background=BACKGROUND_COLOR
         )
-        title_label.pack(pady=20)
+        title_label.pack(pady=25)
 
     def profile_card(self):
         box = ttk.Frame(self.current_page, width=360, height=202, style="Card.TFrame")
@@ -57,10 +57,10 @@ class App(ttk.Window):
         label_name = ttk.Label(
             right,
             text="Faya",
-            font=PIXEL_FONT_SMALL,
+            font=PIXEL_FONT,
             foreground=TEXT_COLOR2,
             background=BACKGROUND_COLOR,
-            style="Card.TLabel"
+            style="Page.TLabel"
         )
         label_name.pack(anchor="w")
 
@@ -69,7 +69,8 @@ class App(ttk.Window):
             text="Streak:",
             font=PIXEL_FONT_MINITURE,
             foreground=PRIMARY_COLOR,
-            background=BACKGROUND_COLOR
+            background=BACKGROUND_COLOR,
+            style="Page.TLabel"
         )
         streak_title.pack(pady=(10, 0),anchor="w")
 
@@ -78,7 +79,8 @@ class App(ttk.Window):
             text="2 DAYS",
             font=PIXEL_FONT_SMALL,
             foreground=PRIMARY_COLOR,
-            background=BACKGROUND_COLOR
+            background=BACKGROUND_COLOR,
+            style="Page.TLabel"
         )
         streak_value.pack(anchor="w", pady=(0, 8))
 
@@ -87,7 +89,8 @@ class App(ttk.Window):
             text="Learning:",
             font=PIXEL_FONT_MINITURE,
             foreground=PRIMARY_COLOR,
-            background=BACKGROUND_COLOR
+            background=BACKGROUND_COLOR,
+            style="Page.TLabel"
         )
         Learning_title.pack(pady=(0, 0),anchor="w")
 
@@ -96,7 +99,8 @@ class App(ttk.Window):
             text="PYTHON",
             font=PIXEL_FONT_SMALL,
             foreground=PRIMARY_COLOR,
-            background=BACKGROUND_COLOR
+            background=BACKGROUND_COLOR,
+            style="Page.TLabel"
         )
         Learning_value.pack(anchor="w", pady=(0, 12))
 
@@ -150,7 +154,7 @@ class App(ttk.Window):
         label = ttk.Label(
             card,
             text=title_text,
-            font=PIXEL_FONT_CARD,
+            font=PIXEL_FONT_SMALL,
             foreground=TEXT_COLOR2,
             background=BACKGROUND_COLOR
         )
@@ -171,7 +175,7 @@ class App(ttk.Window):
 
         btn = ttk.Button(
             card,
-            text="ADD MORE",
+            text="ADD NEW STUFF",
             style="Outlined.TButton"
         )
         btn.pack(expand=True, fill="both")
