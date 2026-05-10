@@ -31,7 +31,7 @@ PIXEL_FONT_CARD = ("Pixel Operator", 16)
 PIXEL_FONT_BOLD = ("Pixel Operator Bold", 24)
 PIXEL_FONT_BOLD_SMALL = ("Pixel Operator Bold", 19)
 
-
+#hello this is a comment to get git to work
 def setup_styles():
     style = ttk.Style()
 
